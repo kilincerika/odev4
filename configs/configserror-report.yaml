@@ -1,0 +1,15 @@
+pipeline:
+  name: error-report
+  source:
+    type: file-source
+    path: C:/Users/Tekno/Desktop/odev4/data/access.log
+  stages:
+    - type: parse
+      format: clf
+    - type: filter
+      field: status
+      op: ">="
+      value: 400
+  sink:
+    type: file-sink
+    path: C:/Users/Tekno/Desktop/odev4/out/errors.txt
